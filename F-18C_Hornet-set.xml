@@ -5,8 +5,9 @@
   <sim>
 
     <description>F/A-18C Hornet</description>
-    <author>Mathias Froehlich, StuartC, SammySkycrafts</author>
-    <status>1.1</status>
+    <author>Mathias Froehlich, StuartC, SammySkycrafts, sryu1</author>
+    <status>alpha</status>
+    <minimum-fg-version>2020.3</minimum-fg-version>
 
     <flight-model>jsb</flight-model>
     <aero>f18</aero>
@@ -225,26 +226,6 @@
         <!-- <string n="1" type"string"/> RESERVED FOR MODE WHEELS/AMPHIBIOUS -->
       </generic>
     </multiplay>
-
-    <rendering>
-      <redout>
-        <enabled type="bool" userarchive="y">true</enabled>
-        <new type="bool">false</new>
-        <parameters>
-          <locked-by-airframe type="bool">true</locked-by-airframe>
-          <blackout-onset-g type="double">5</blackout-onset-g>
-          <blackout-complete-g type="double">9</blackout-complete-g>
-          <onset-blackout-sec type="double">300</onset-blackout-sec>
-          <fast-blackout-sec type="double">10</fast-blackout-sec>
-          <redout-onset-g type="double">-1.5</redout-onset-g>
-          <redout-complete-g type="double">-4</redout-complete-g>
-          <onset-redout-sec type="double">45</onset-redout-sec>
-          <fast-redout-sec type="double">3.5</fast-redout-sec>
-          <recover-fast-sec type="double">7</recover-fast-sec>
-          <recover-slow-sec type="double">15</recover-slow-sec>
-        </parameters>
-      </redout>
-    </rendering>
 
 
     <weight n="0">
@@ -633,54 +614,64 @@
       <title>F-18C</title>
       <key>
         <name>d</name>
-        <desc>Open/Close canopy</desc>
+        <desc>Open/Close Canopy</desc>
       </key>
 
       <key>
         <name>w</name>
-        <desc>Weapon mode select</desc>
+        <desc>Weapon Mode Cycle</desc>
       </key>
+
       <key>
         <name>e</name>
-        <desc>Guns fire</desc>
+        <desc>Guns Fire</desc>
       </key>
+
       <key>
         <name>f</name>
-        <desc>Fold/unfold wings</desc>
+        <desc>Fold/Unfold Wings</desc>
       </key>
+
       <key>
         <name>o/O</name>
         <desc>Arrestor hook</desc>
       </key>
+
       <key>
         <name>l</name>
-        <desc>engage launch bar</desc>
+        <desc>Engage Launch Bar</desc>
       </key>
 
       <key>
         <name>8</name>
-        <desc>Launch flares</desc>
+        <desc>Launch Flares</desc>
       </key>
+
       <key>
         <name>T</name>
         <desc>Toggle RWR</desc>
       </key>
+
       <key>
         <name>t</name>
         <desc>Change Radar Distances (10, 20 50,100,150)</desc>
       </key>
+
       <key>
         <name>R</name>
         <desc>Activate/desactivate targeting the nearest (the target have to be bellow radar range)</desc>
       </key>
+
       <key>
         <name>H</name>
         <desc>Toggle Armements Circles</desc>
       </key>
+
       <key>
         <name>n</name>
         <desc>Next Target</desc>
       </key>
+
       <key>
         <name>Ctrl-n</name>
         <desc>Previous Target</desc>
@@ -942,31 +933,40 @@
       <file>Aircraft/F-18C/Nasal/doors.nas</file>
     </doors>
 
-    <F-18C>
+    <crash>
+      <file>Aircraft/F-18C/Nasal/blackout.nas</file>
+    </crash>
 
+    <F-18C>
       <file>Aircraft/F-18C/Nasal/doors.nas</file>
       <file>Aircraft/F-18C/Nasal/fuelhose.nas</file>
       <file>Aircraft/F-18C/Nasal/liveries.nas</file>
-
     </F-18C>
+
     <F-18C_fuel>
       <file>Aircraft/F-18C/Nasal/fuel.nas</file>
     </F-18C_fuel>
+
     <radar>
       <file>Aircraft/F-18C/Nasal/radar.nas</file>
     </radar>
+
     <radar2>
       <file>Aircraft/F-18C/Nasal/radar2.nas</file>
     </radar2>
+
     <rwr>
       <file>Aircraft/F-18C/Models/Interior/Panel/Instruments/Radar/rwr.nas</file>
     </rwr>
+
     <hud>
       <file>Aircraft/F-18C/Nasal/MiscRwr.nas</file>
     </hud>
+
     <radardist>
       <file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
     </radardist>
+
     <guns>
       <file>Aircraft/F-18C/Nasal/weapons.nas</file>
       <file>Aircraft/F-18C/Nasal/revi.nas</file>
@@ -976,11 +976,9 @@
       <file>Aircraft/F-18C/Nasal/lights.nas</file>
     </lights>
 
-
     <low>
       <file>Aircraft/F-18C/Nasal/low.nas</file>
     </low>
-
 
     <aar>
       <file>Aircraft/Generic/aar.nas</file>
@@ -993,6 +991,7 @@
     <emu>
       <file>Aircraft/F-18C/Nasal/emu.nas</file>
     </emu>
+
     <lights>
       <file>Aircraft/F-18C/Nasal/Lights.nas</file>
     </lights>
@@ -1000,11 +999,15 @@
     <load>
       <file>Aircraft/F-18C/Nasal/ext_stores.nas</file>
     </load>
+
     <missile>
       <file>Aircraft/F-18C/Nasal/missile.nas</file>
       <file>Aircraft/F-18C/Nasal/Loading_Missiles.nas</file>
     </missile>
 
+    <autostart>
+      <file>Aircraft/F-18C/Nasal/autostart.nas</file>
+    </autostart>
   </nasal>
 
 
