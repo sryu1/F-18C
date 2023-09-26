@@ -10,21 +10,26 @@
                 <property>aero/qbar-psf</property>
                 <property>metrics/Sw-sqft</property>
                 <table>
-                    <independentVar lookup="row">aero/alpha-rad</independentVar>
-                    <tableData>
-                        -1.57 0.0000
-                        -1.22 -0.5806
-                        -1.05 -0.7823
-                        -0.88 -0.9033
-                        -0.73 -0.8431
-                        -0.67 -2.1077
-                        0.00 0.5200
-                        0.54 2.6277
-                        0.60 1.3630
-                        0.88 1.0967
-                        1.05 0.9497
-                        1.22 0.7050
-                        1.57 0.0000
+                    <independentVar lookup="row">aero/alpha-deg</independentVar>
+                    <independentVar lookup="column">aero/beta-deg</independentVar>
+                    <independentVar lookup="table">velocities/mach</independentVar>
+                    <tableData breakpoint="0.001">
+                                            -10.0           0.0             10.0
+                            -10.0   -0.143333       -0.263133       0.122375
+                            0.0     0.332314        0.006962        -0.412691
+                            10.0    0.463517        0.275386        0.317540
+                    </tableData>
+                    <tableData breakpoint="0.45">
+                                            -10.0           0.0             10.0
+                            -10.0   -0.408879       -0.288243       -0.162769
+                            0.0     -0.695544       0.006355        -0.039281
+                            10.0    0.307352        0.287058        0.303537
+                    </tableData>
+                    <tableData  breakpoint="0.9">
+                                            -10.0           0.0             10.0
+                            -10.0   11.734658       -0.312994       -1.529312
+                            0.0     -5.460793       0.003954        -0.151409
+                            10.0    0.100393        0.349951        0.178506
                     </tableData>
                 </table>
             </product>
@@ -107,13 +112,63 @@
             </product>
         </function>
 
+        <function name="aero/force/Drag_base">
+            <description>Drag due to alpha and beta</description>
+			<product>
+				<property>aero/qbar-psf</property>
+				<property>metrics/Sw-sqft</property>
+                <table>
+                    <independentVar lookup="row">aero/alpha-deg</independentVar>
+                    <independentVar lookup="column">aero/beta-deg</independentVar>
+                    <independentVar lookup="table">velocities/mach</independentVar>
+                    <tableData breakpoint="0.001">
+                                            -10.0           0.0             10.0
+                            -10.0   0.030952        0.005278        0.007761
+                            0.0     0.105025        0.004281        0.017500
+                            10.0    0.024367        0.005273        0.014306
+                    </tableData>
+                    <tableData breakpoint="0.45">
+                                            -10.0           0.0             10.0
+                            -10.0   0.006806        0.005444        0.017471
+                            0.0     0.030030        0.004281        0.004539
+                            10.0    0.005706        0.005399        0.005661
+                    </tableData>
+                    <tableData brekapoint="0.9">
+                                            -10.0           0.0             10.0
+                            -10.0   4.374890        0.005966        0.245214
+                            0.0     2.054315        0.004308        0.006255
+                            10.0    0.006120        0.006383        0.015601
+                    </tableData>
+                </table>
+            </product>
+        </function>
+
         <function name="aero/force/Drag_induced">
             <description>Induced drag</description>
             <product>
-                <property>aero/qbar-psf</property>
-                <property>metrics/Sw-sqft</property>
-                <property>aero/cl-squared</property>
-                <value> 0.0948 </value>
+                <table>
+                    <independentVar lookup="row">aero/alpha-deg</independentVar>
+                    <independentVar lookup="column">aero/beta-deg</independentVar>
+                    <independentVar lookup="table">velocities/mach</independentVar>
+                    <tableData breakpoint="0.001">
+                                            -10.0           0.0             10.0
+                            -10.0   -0.630443       0.026751        -1.678921
+                            0.0     -0.895188       -0.000450       -0.337546
+                            10.0    -0.400253       0.013985        -0.341320
+                    </tableData>
+                    <tableData breakpoint="0.45">
+                                            -10.0           0.0             10.0
+                            -10.0   -0.109565       0.025540        -0.156217
+                            0.0     0.015605        -0.000683       -0.046736
+                            10.0    -0.024270       0.016952        -0.026356
+                    </tableData>
+                    <tableData breakpoint="0.9">
+                                            -10.0           0.0             10.0
+                            -10.0   49.775961       0.013838        -0.492069
+                            0.0     0.928982        0.000469        -0.026604
+                            10.0    0.072080        0.030603        0.101805
+                    </tableData>
+                </table>
             </product>
         </function>
 
@@ -259,7 +314,29 @@
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/cbarw-ft</property>
                 <property>aero/alpha-rad</property>
-                <value> -0.2884 </value>
+                <table>
+                    <independentVar lookup="row">aero/alpha-deg</independentVar>
+                    <independentVar lookup="column">aero/beta-deg</independentVar>
+                    <independentVar lookup="table">velocities/mach</independentVar>
+                    <tableData breakpoint="0.001">
+                                            -10.0           0.0             10.0
+                            -10.0   -17.745595      -0.399361       -50.273358
+                            0.0     -51.656596      1.627197        -326.680089
+                            10.0    -4.268113       7.008007        -16.279883
+                    </tableData>
+                    <tableData breakpoint="0.45">
+                                            -10.0           0.0             10.0
+                            -10.0   34.905944       -0.036071       -3418.577990
+                            0.0     -230.041765     4.055698        2.886566
+                            10.0    -6.084559       16.026167       -2.691366
+                    </tableData>
+                    <tableData  breakpoint="0.9">
+                                            -10.0           0.0             10.0
+                            -10.0   7706076.692803  29.448952       1664.665912
+                            0.0     -63063.990566   11.772487       -176.849785
+                            10.0    60.770814       14.210308       1026.071360
+                    </tableData>
+                </table>
             </product>
         </function>
 
@@ -317,12 +394,26 @@
                 <property>aero/beta-rad</property>
                 <property>fcs/gear-no-wow</property>
                 <table>
-                    <independentVar lookup="row">aero/alpha-rad</independentVar>
-                    <independentVar lookup="column">aero/Re</independentVar>
-                    <tableData>
-                        14561726 16017897 21842586 29150180
-                        -0.0349 -0.7632 -0.0598 -0.0262 -0.0144
-                        0.3491 -0.7632 -0.0598 -0.0262 -0.0144
+                    <independentVar lookup="row">aero/alpha-deg</independentVar>
+                    <independentVar lookup="column">aero/beta-deg</independentVar>
+                    <independentVar lookup="table">velocities/mach</independentVar>
+                    <tableData breakpoint="0.001">
+                                            -10.0           0.0             10.0
+                            -10.0   0.464861        -0.065600       -2.320820
+                            0.0     1.809824        0.155488        35.212447
+                            10.0    -0.193214       0.224867        -0.395712
+                    </tableData>
+                    <tableData breakpoint="0.45">
+                                            -10.0           0.0             10.0
+                            -10.0   -1.728868       -0.173285       231.950063
+                            0.0     38.689002       0.030517        -0.584516
+                            10.0    -0.841303       1.032077        1.669167
+                    </tableData>
+                    <tableData  breakpoint="0.9">
+                                            -10.0           0.0             10.0
+                            -10.0   -3351.015633    3.549182        -3.215129
+                            0.0     5741.408611     -0.742933       -17.396813
+                            10.0    1.338618        0.438113        -113.127921
                     </tableData>
                 </table>
             </product>
@@ -393,7 +484,7 @@
     <axis name="YAW">
 
         <!-- Stall initiator -->
-        <function name="aero/moment/Yaw_alpha">
+        <!-- <function name="aero/moment/Yaw_alpha">
             <description>Yaw moment due to alpha</description>
             <product>
                 <property>aero/qbar-psf</property>
@@ -411,7 +502,7 @@
                     </tableData>
                 </table>
             </product>
-        </function>
+        </function> -->
 
         <function name="aero/moment/Yaw_beta">
             <description>Yaw moment due to beta</description>
@@ -420,7 +511,29 @@
                 <property>metrics/Sw-sqft</property>
                 <property>metrics/bw-ft</property>
                 <property>aero/beta-rad</property>
-                <value> 0.3472 </value>
+                <table>
+                    <independentVar lookup="row">aero/alpha-deg</independentVar>
+                    <independentVar lookup="column">aero/beta-deg</independentVar>
+                    <independentVar lookup="table">velocities/mach</independentVar>
+                    <tableData breakpoint="0.001">
+                                            -10.0           0.0             10.0
+                            -10.0   -13.651385      0.395439        80.944618
+                            0.0     11.002746       -6.180853       -2692.789749
+                            10.0    -20.372162      0.657466        8.107590
+                    </tableData>
+                    <tableData breakpoint="0.45">
+                                            -10.0           0.0             10.0
+                            -10.0   33.657287       -12.860817      -12844.548860
+                            0.0     84.839889       -3.087027       33.989312
+                            10.0    32.126230       -6.432422       -63.024001
+                    </tableData>
+                    <tableData breakpoint="0.9">
+                                            -10.0           0.0             10.0
+                            -10.0   1077811.671480  -243.024356     279.299323
+                            0.0     -95190.614740   47.354488       -19.649999
+                            10.0    -123.064295     -29.239418      7524.993885
+                    </tableData>
+                </table>
             </product>
         </function>
 
